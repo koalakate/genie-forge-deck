@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genie Forge</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Outfit:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #06060b;
+            --bg-card: rgba(255,255,255,0.03);
+            --bg-card-hover: rgba(255,255,255,0.055);
+            --border-subtle: rgba(255,255,255,0.07);
+            --border-accent: rgba(255,255,255,0.14);
+            --text-primary: #ede9e3;
+            --text-secondary: #9590a0;
+            --text-muted: #5a5468;
+            --accent-coral: #BA5380;
+            --accent-coral-dim: rgba(186,83,128,0.15);
+            --accent-green: #54b87e;
+            --accent-green-dim: rgba(84,184,126,0.12);
+            --accent-gold: #cda24a;
+            --accent-gold-dim: rgba(205,162,74,0.12);
+            --accent-blue: #5b8def;
+            --font-display: 'Bricolage Grotesque', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        /* === REVEAL OVERRIDES === */
+        .reveal-viewport {
+            background: var(--bg-deep);
+        }
+
+        .reveal {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 32px;
+            color: var(--text-primary);
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal .slides > section {
+            padding: 0;
+            text-align: left;
+        }
+
+        .reveal .slides > section > .slide-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 110px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .reveal .slides > section > .slide-inner:has(.slide-label) {
+            padding-top: 130px;
+        }
+
+        /* === TYPOGRAPHY === */
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            text-transform: none;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin: 0 0 0.35em 0;
+            text-shadow: none;
+        }
+
+        .reveal h1 {
+            font-size: 3em;
+            font-weight: 800;
+        }
+
+        .reveal h2 {
+            font-size: 2.4em;
+            font-weight: 700;
+        }
+
+        .reveal h3 {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .reveal p {
+            font-size: 1.2em;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin: 0 0 0.5em 0;
+        }
+
+        .reveal .progress {
+            height: 4px;
+            color: var(--accent-coral);
+        }
+
+        .reveal .controls {
+            color: var(--text-muted);
+        }
+
+        .reveal .slide-number {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-muted);
+            background: transparent;
+        }
+
+        /* === UTILITIES === */
+        .accent-coral { color: var(--accent-coral); }
+        .accent-green { color: var(--accent-green); }
+        .accent-gold { color: var(--accent-gold); }
+        .text-muted { color: var(--text-muted); }
+        .text-secondary { color: var(--text-secondary); }
+
+        .brand-tag {
+            font-family: var(--font-display);
+            font-size: 0.72em;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: absolute;
+            top: 48px;
+            right: 110px;
+        }
+
+        .slide-label {
+            font-family: var(--font-body);
+            font-size: 0.72em;
+            font-weight: 500;
+            color: var(--accent-coral);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+            position: absolute;
+            top: 48px;
+            left: 110px;
+        }
+
+        /* === BACKGROUNDS === */
+        .bg-mesh {
+            background:
+                radial-gradient(ellipse at 15% 85%, rgba(186,83,128,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 15%, rgba(84,184,126,0.035) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(91,141,239,0.025) 0%, transparent 60%),
+                var(--bg-deep);
+        }
+
+        .bg-warm {
+            background:
+                radial-gradient(ellipse at 30% 70%, rgba(186,83,128,0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 70% 30%, rgba(205,162,74,0.035) 0%, transparent 50%),
+                var(--bg-deep);
+        }
+
+        .bg-solve {
+            background:
+                radial-gradient(ellipse at 20% 70%, rgba(84,184,126,0.06) 0%, transparent 45%),
+                radial-gradient(ellipse at 80% 30%, rgba(91,141,239,0.035) 0%, transparent 50%),
+                var(--bg-deep);
+        }
+
+        .bg-gold {
+            background:
+                radial-gradient(ellipse at 50% 80%, rgba(205,162,74,0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 20% 20%, rgba(186,83,128,0.035) 0%, transparent 50%),
+                var(--bg-deep);
+        }
+
+        .noise-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        /* === TITLE SLIDE === */
+        .title-slide {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title-slide h1 {
+            font-size: 3.8em;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.12em;
+        }
+
+        .title-tagline {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .logo-img {
+            height: 30vh;
+            width: auto;
+        }
+
+        .brand-logo {
+            height: 32px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+        /* === CARDS === */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            padding: 36px 34px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .card p {
+            font-size: 0.78em;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-size: 1.1em;
+        }
+
+        .card-icon.coral { background: var(--accent-coral-dim); color: var(--accent-coral); }
+        .card-icon.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .card-icon.gold { background: var(--accent-gold-dim); color: var(--accent-gold); }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        /* === PIPELINE === */
+        .pipeline-wrap {
+            margin: 40px 0 0;
+            padding: 44px 60px 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 22px;
+        }
+
+        .pipeline-nodes {
+            display: flex;
+            align-items: center;
+        }
+
+        .pipeline-node {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        .pipeline-node.done {
+            background: var(--accent-green-dim);
+            border: 2.5px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .pipeline-node.active {
+            background: var(--accent-coral-dim);
+            border: 2.5px solid var(--accent-coral);
+            color: var(--accent-coral);
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(186,83,128,0.35); }
+            50% { box-shadow: 0 0 0 10px rgba(186,83,128,0); }
+        }
+
+        .pipeline-connector {
+            flex: 1;
+            height: 3px;
+            background: var(--accent-green);
+            opacity: 0.3;
+        }
+
+        .pipeline-connector.last {
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-coral));
+            opacity: 0.45;
+        }
+
+        .pipeline-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+        }
+
+        .pipeline-label-group {
+            flex: 0 0 72px;
+            text-align: center;
+        }
+
+        .pipeline-label {
+            font-family: var(--font-body);
+            font-size: 0.56em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        .pipeline-status {
+            font-size: 0.46em;
+            font-weight: 600;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .pipeline-status.done { color: var(--accent-green); }
+        .pipeline-status.running { color: var(--accent-coral); }
+
+        /* === SCORE === */
+        .score-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .score-label {
+            font-size: 0.55em;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .score-value {
+            font-family: var(--font-display);
+            font-size: 2.6em;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .score-max {
+            font-size: 0.9em;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        /* === TRUST LOOP === */
+        .loop-flow {
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+            margin-top: 36px;
+        }
+
+        .loop-card {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 30px 26px;
+            position: relative;
+        }
+
+        .loop-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .loop-card.new::after { background: var(--accent-blue); }
+        .loop-card.existing::after { background: var(--accent-gold); }
+        .loop-card.adjusted::after { background: var(--accent-green); }
+
+        .loop-card h3 {
+            font-size: 0.92em;
+            margin-bottom: 12px;
+        }
+
+        .loop-card p {
+            font-size: 0.68em;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .loop-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+
+        /* === PROOF BADGES === */
+        .proof-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .proof-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            font-size: 0.68em;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .proof-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .proof-badge .dot.green { background: var(--accent-green); }
+        .proof-badge .dot.gold { background: var(--accent-gold); }
+        .proof-badge .dot.coral { background: var(--accent-coral); }
+        .proof-badge .dot.blue { background: var(--accent-blue); }
+
+        /* === ARCHITECTURE FLOW === */
+        .arch-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1.3fr auto 1fr;
+            gap: 0;
+            align-items: stretch;
+            margin-top: 28px;
+        }
+
+        .arch-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .arch-col-label {
+            font-family: var(--font-body);
+            font-size: 0.48em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .arch-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .arch-block-name {
+            font-family: var(--font-display);
+            font-size: 0.68em;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .arch-block-desc {
+            font-size: 0.5em;
+            color: var(--text-muted);
+            line-height: 1.45;
+            font-weight: 400;
+        }
+
+        .arch-center {
+            background: var(--accent-coral-dim);
+            border: 1.5px solid rgba(186,83,128,0.3);
+            border-radius: 16px;
+            padding: 24px 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .arch-center-title {
+            font-family: var(--font-display);
+            font-size: 0.78em;
+            font-weight: 700;
+            color: var(--accent-coral);
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+
+        .arch-center-features {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .arch-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.54em;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .arch-feature-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-coral);
+            flex-shrink: 0;
+            opacity: 0.6;
+        }
+
+        .arch-arrow-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 12px;
+        }
+
+        .arch-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arch-arrow-line {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--text-muted), var(--accent-coral));
+            opacity: 0.4;
+            position: relative;
+        }
+
+        .arch-arrow-line::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -4px;
+            border: 5px solid transparent;
+            border-left: 6px solid var(--accent-coral);
+            opacity: 0.5;
+        }
+
+        .arch-arrow-line.right {
+            background: linear-gradient(90deg, var(--accent-coral), var(--text-muted));
+        }
+
+        .arch-arrow-line.right::after {
+            border-left-color: var(--text-muted);
+        }
+
+        /* === CTA === */
+        .cta-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 20px;
+        }
+
+        .cta-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 44px;
+            max-width: 800px;
+        }
+
+        .cta-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .cta-num {
+            font-family: var(--font-display);
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--accent-gold);
+            opacity: 0.5;
+            min-width: 90px;
+            flex-shrink: 0;
+            line-height: 1.25;
+        }
+
+        .cta-text {
+            font-size: 1.1em;
+            color: var(--text-primary);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* === FORM === */
+        .cta-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 36px 34px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cta-form-title {
+            font-family: var(--font-display);
+            font-size: 0.92em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .cta-form-subtitle {
+            font-size: 0.6em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.52em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-group input {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: var(--font-body);
+            font-size: 0.62em;
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.25s;
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent-coral);
+        }
+
+        .form-submit {
+            background: #BA5380;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-family: var(--font-display);
+            font-size: 0.68em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.25s;
+            margin-top: 4px;
+        }
+
+        .form-submit:hover {
+            opacity: 0.85;
+        }
+
+        /* === FRAGMENTS === */
+        .reveal .fragment {
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal .fragment.fade-up {
+            transform: translateY(28px);
+        }
+
+        .reveal .fragment.fade-up.visible {
+            transform: translateY(0);
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes drift-in {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .present .animate-in {
+            animation: drift-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .present .animate-in.d1 { animation-delay: 0.1s; }
+        .present .animate-in.d2 { animation-delay: 0.2s; }
+        .present .animate-in.d3 { animation-delay: 0.35s; }
+        .present .animate-in.d4 { animation-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.15s !important;
+            }
+            .pipeline-node.active { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+    <!-- SLIDE 0: TITLE -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner title-slide bg-mesh noise-overlay">
+            <div class="logo-mark animate-in d1">
+                <img class="logo-img" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMzg0LjAwMDAwMHB0IiBoZWlnaHQ9IjI1Ni4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDM4NC4wMDAwMDAgMjU2LjAwMDAwMCIKIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMjU2LjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIKZmlsbD0iI0JBNTM4MCIgc3Ryb2tlPSJub25lIj4KPHBhdGggZD0iTTI0NDIgMjMyMCBjLTUyIC0zMiAtNzQgLTc2IC02OSAtMTM4IDIgLTM0IDEyIC02MyAyNiAtODIgMTIgLTE3IDE3Ci0zMCAxMiAtMzAgLTE5IDAgLTcwIDYxIC04NCAxMDIgbC0xNSA0MyAtMSAtMzUgYy0xIC02MCAxNyAtMTA2IDU5IC0xNDQgODgKLTc5IDI1MCAtODggNDIwIC0yMSAxOTggNzcgMjYzIDk3IDMzNSAxMDIgMTY2IDEzIDI4NyAtNTkgMzM3IC0yMDAgbDE5IC01MgotNiA1NSBjLTkgODEgLTU3IDE3MyAtMTEyIDIxNSAtNjkgNTMgLTEzNSA2OCAtMjYyIDYzIC05NCAtNSAtMTIwIC0xMCAtMjMxCi01MSAtMjA5IC03NiAtMjYxIC04MyAtMzM2IC00NyAtNTggMjggLTgyIDc3IC02MiAxMjcgNyAyMCAyNSA0NSAzOSA1NiAzMyAyNAoxMDcgMzMgMTQ4IDE5IDQ1IC0xNiAzOCAtNCAtMTEgMTggLTU5IDI3IC0xNjIgMjcgLTIwNiAweiIvPgo8cGF0aCBkPSJNMTkzOSAyMTU5IGMtMSAtODEgLTIgLTgzIC0xMyAtNDUgbC0xMiAzOSAtMTMgLTMwIGMtMzEgLTc1IC01IC0xNDMKNTQgLTE0MyAyOSAwIDM5IDYgNTUgMzMgMTEgMTcgMjAgNDMgMjAgNTcgMCAzMSAtMjkgOTMgLTY0IDEzOSBsLTI2IDM1IC0xCi04NXoiLz4KPHBhdGggZD0iTTMwMjUgMjA1MiBsLTUwIC0xNiA3NiAtNyBjODAgLTcgMTAzIC0xNSAxMzMgLTQ4IDI2IC0yOSAxNSAtNzYgLTE3Ci02NiAtMTIgNCAtNTcgOSAtMTAwIDEyIC0xMDEgNyAtMTM0IC02IC0yNzkgLTEwOSAtMTI1IC04OSAtMTQ2IC0xMDEgLTIyNwotMTMxIC01NCAtMjEgLTc1IC0yMiAtNTczIC0yNSAtMjg1IC0yIC01MTggLTQgLTUxOSAtNSAwIC0xIC0xNSAtMTA4IC0zMwotMjM3IC0yOSAtMjA0IC0zMSAtMjM2IC0xOCAtMjQ1IDc3IC01MyAxMDMgLTgwIDEyNyAtMTMyIDI0IC01MCAyNyAtNjYgMjMKLTEzMiAtNSAtODIgLTIwIC0xMjAgLTY5IC0xNzYgbC0zMSAtMzUgNTQgMCBjNDggMCA2OSA4IDE1OSA1NiA1NyAzMSAxMjQgNzIKMTQ5IDkxIDcyIDU0IDI3OSAyMjcgMjc2IDIzMCAtMSAxIC0yOSAtMiAtNjIgLTcgLTExMCAtMTggLTI3MSAtOCAtMzQ2IDIzCi0yNSAxMCAtMyAxMSAxMjYgOSAxNzYgLTQgMjczIDEwIDQxNCA1OSAxOTAgNjYgMzE1IDE3MSA0OTcgNDE0IDE1NyAyMTEgMjM2CjI3NSAzMzkgMjc1IDU5IDAgMTAwIC0yMSAxMTYgLTU5IDE3IC00MiA1IC04MiAtMzggLTEyMyAtNDggLTQ2IC01NiAtNTAgLTE4NQotODcgLTE5NyAtNTcgLTI4MiAtMTE4IC0yODIgLTIwMyAwIC04MiA5NiAtMTE4IDE1NiAtNTkgMzggMzkgMzggNzUgLTEgMTExCmwtMzAgMjggNjIgMjEgYzM1IDExIDExOSAzMiAxODcgNDYgMjEzIDQ1IDI4NSA4MiAzMzYgMTc2IDczIDEzMyAxMyAzMDUgLTEyNAozNTQgLTU2IDIwIC0xODEgMTggLTI0NiAtM3ogbS0zNzQgLTQ4NiBjLTE1OSAtMjA1IC0zOTQgLTMyNSAtNjkzIC0zNTEgLTg3Ci04IC0xMTAgOCAtMjggMTkgMTU1IDIxIDM2MiA5NiA0ODggMTc5IDc3IDUwIDIxMCAxNTYgMjQ2IDE5NiAzOCA0MiAyOCAxMQotMTMgLTQzeiBtLTc0NiAzNiBjLTYgLTUgLTc3IC0xNyAtMTYwIC0yNiAtMjAzIC0yNCAtMTg5IC0xOSAtMjE5IC04NCBsLTI1Ci01NyA1IDcwIGMzIDM5IDcgNzYgOSA4MiAzIDkgNDkgMTMgMTY3IDE2IDkwIDEgMTc5IDQgMTk4IDUgMTkgMSAzMCAtMiAyNSAtNnoiLz4KPHBhdGggZD0iTTE4NjYgMTg3MyBjLTU3IC01NiAtNTggLTU3IC0zNyAtMTkgMzggNjggMCA2MSAtNzMgLTEzIGwtNDggLTQ5CjE0NCAtNyBjNzggLTQgMTcyIC0xMSAyMDggLTE2IDg3IC0xMiAyNjMgLTEyIDI1NSAwIC0zIDUgLTMxIDIxIC02MiAzNiAtMzEKMTQgLTgwIDQ4IC0xMDkgNzUgbC01MyA1MCAtODMgMCAtODMgMCAtNTkgLTU3eiIvPgo8cGF0aCBkPSJNNDkwIDE2MTAgYzE0NyAtMjA2IDQwNiAtMzQ5IDczOCAtNDA4IGwxMTIgLTE5IDAgMjEzIDAgMjE0IC02NCAwCi02NCAwIC0xOCAtMTIwIGMtMTAgLTY2IC0yMCAtMTIwIC0yNCAtMTIwIC0zIDAgLTE0IDI0IC0yMyA1NCAtMTYgNTAgLTIwIDU0Ci01NSA2MSAtMTQ3IDI2IC0zODAgODIgLTQ4NSAxMTUgLTY5IDIyIC0xMjggNDAgLTEzMiA0MCAtMyAwIDMgLTEzIDE1IC0zMHoiLz4KPHBhdGggZD0iTTY4NSAxNjA5IGMyMiAtNSAxMDggLTIzIDE5MCAtMzkgMjUzIC00OCAyNjUgLTQ4IDIzMyAtOCAtMTAgMTEgLTU4CjE5IC0xOTggMzIgLTEwMiAxMCAtMjAzIDE5IC0yMjUgMjIgbC00MCA0IDQwIC0xMXoiLz4KPHBhdGggZD0iTTIzMDYgMTEzOSBjLTM4IC0xNiAtOTYgLTUyIC0xMzAgLTgwIC02MiAtNTIgLTQ3NSAtMzgzIC01MzUgLTQyOQpsLTMyIC0yNSAzIC04MiAzIC04MiA0NSAyOCBjOTQgNTkgMTU1IDc1IDI4MCA3NSAxMjkgMSAxNzkgLTExIDI3NCAtNjkgbDU2Ci0zNCAwIDg3IC0xIDg3IC0xMzQgMTEwIGMtNzQgNjEgLTEzNCAxMTQgLTEzNSAxMTggMCAxMSA3OCAtMzUgMTk1IC0xMTUgbDEwMQotNjggMTQ5IDAgMTUwIDAgLTY4IDM4IGMtODAgNDQgLTEzNyA5NyAtMTc1IDE2MCAtMjMgNDEgLTI3IDU4IC0yNyAxMjcgMCA2OAo0IDg5IDI3IDEzMyAxNSAyOSAyNiA1MiAyNSA1MSAtMSAtMSAtMzMgLTE0IC03MSAtMzB6Ii8+CjxwYXRoIGQ9Ik0xMzc2IDU2NiBsLTEzOSAtMzIgLTI4IC01NyAtMjkgLTU3IDE5MCAwIDE5MCAwIDAgOTAgYzAgMTA3IDE4IDEwMgotMTg0IDU2eiIvPgo8cGF0aCBkPSJNMjMyMCA1MTAgbDAgLTkwIDE5MyAwIDE5MiAwIC0zIDkwIC0zIDkwIC0xOTAgMCAtMTg5IDAgMCAtOTB6Ii8+CjwvZz4KPC9zdmc+Cg==" alt="Genie Forge">
+            </div>
+            <h1 class="animate-in d2">Genie Forge</h1>
+            <p class="title-tagline animate-in d3">Trust at the speed of launch</p>
+            <aside class="notes">
+                Welcome. Today we're going to talk about why the hardest part of AI-powered analytics
+                isn't building the experience — it's building trust in the experience.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 1: THE TRUST PROBLEM -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-warm noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <h1 style="max-width: 900px;">
+                The hard part isn't launching a Genie&nbsp;space.
+            </h1>
+            <h1 class="fragment fade-up" style="max-width: 900px;">
+                It's launching one people <span class="accent-coral">trust.</span>
+            </h1>
+            <aside class="notes">
+                Teams can already get something live. The harder question is whether anyone
+                will trust the answers enough to use it in real work. If trust is the issue,
+                the next question is where trust breaks down today.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: WHERE TRUST BREAKS -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-warm noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <div class="slide-label">The problem</div>
+            <h2 class="animate-in d2" style="max-width: 780px;">
+                Three things make Genie setup <span class="accent-coral">fragile</span> before launch.
+            </h2>
+            <div class="three-col">
+                <div class="card fragment fade-up" data-fragment-index="1">
+                    <div class="card-icon coral">&#x26A0;</div>
+                    <h3>No quality loop</h3>
+                    <p>Answers go live without grounded evaluation. No baseline, no score, no way to know if what shipped is trustworthy.</p>
+                </div>
+                <div class="card fragment fade-up" data-fragment-index="2">
+                    <div class="card-icon coral">&#x270D;</div>
+                    <h3>Manual authoring</h3>
+                    <p>Business framing, instructions, joins, and context assembled by hand every time. Fragile. Inconsistent. Unrepeatable.</p>
+                </div>
+                <div class="card fragment fade-up" data-fragment-index="3">
+                    <div class="card-icon coral">&#x2699;</div>
+                    <h3>Raw warehouse complexity</h3>
+                    <p>No semantic buffer between warehouse tables and the Genie experience. One schema change breaks the space.</p>
+                </div>
+            </div>
+            <aside class="notes">
+                Most teams are hand-assembling business framing, instructions, joins, and quality checks.
+                That means the experience may launch, but the trust model is still weak.
+                So the answer is not another black box. The answer is a controlled build path.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: THE BUILD LINE -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-solve noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <div class="slide-label">The solution</div>
+            <h2 class="animate-in d2" style="max-width: 800px;">
+                Setup becomes an <span class="accent-green">auditable build&nbsp;line.</span>
+            </h2>
+            <p class="animate-in d3" style="max-width: 650px; margin-bottom: 0;">
+                Every stage is explicit, reviewable, and easy to reason about.
+            </p>
+
+            <div class="pipeline-wrap fragment fade-up" data-fragment-index="1">
+                <div class="pipeline-nodes">
+                    <div class="pipeline-node done">&#10003;</div>
+                    <div class="pipeline-connector"></div>
+                    <div class="pipeline-node done">&#10003;</div>
+                    <div class="pipeline-connector"></div>
+                    <div class="pipeline-node done">&#10003;</div>
+                    <div class="pipeline-connector"></div>
+                    <div class="pipeline-node done">&#10003;</div>
+                    <div class="pipeline-connector"></div>
+                    <div class="pipeline-node done">&#10003;</div>
+                    <div class="pipeline-connector last"></div>
+                    <div class="pipeline-node active">&#x21BB;</div>
+                </div>
+                <div class="pipeline-labels">
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Validate<br>request</div>
+                        <div class="pipeline-status done">done</div>
+                    </div>
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Discovery</div>
+                        <div class="pipeline-status done">done</div>
+                    </div>
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Semantic<br>model</div>
+                        <div class="pipeline-status done">done</div>
+                    </div>
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Genie<br>Space</div>
+                        <div class="pipeline-status done">done</div>
+                    </div>
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Evals</div>
+                        <div class="pipeline-status done">4/4</div>
+                    </div>
+                    <div class="pipeline-label-group">
+                        <div class="pipeline-label">Autorefine</div>
+                        <div class="pipeline-status running">running</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="notes">
+                The differentiator is not automation by itself. The differentiator is that every stage
+                is explicit, reviewable, and easy to reason about. Read-only discovery. Deterministic semantic build.
+                Git-backed authoring and deploy. Operator visibility. Managed autorefine.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: THE TRUST LOOP -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-solve noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <div class="slide-label">Durable value</div>
+            <h2 class="animate-in d2" style="max-width: 850px;">
+                Trust isn't a launch event.<br>
+                It becomes a <span class="accent-green">measurable loop.</span>
+            </h2>
+
+            <div class="loop-flow fragment fade-up" data-fragment-index="1">
+                <div class="loop-card new">
+                    <h3><span style="color: var(--accent-blue);">&#x25CF;</span>&ensp;New spaces</h3>
+                    <p>First build from source tables to trusted Genie experience. Full pipeline, grounded evals, baseline score.</p>
+                </div>
+                <div class="loop-arrow">&#x2192;</div>
+                <div class="loop-card existing">
+                    <h3><span style="color: var(--accent-gold);">&#x25CF;</span>&ensp;Live spaces</h3>
+                    <p>Continuous monitoring. Drift detection. Autorefine candidates tested against the current champion.</p>
+                </div>
+                <div class="loop-arrow">&#x2192;</div>
+                <div class="loop-card adjusted">
+                    <h3><span style="color: var(--accent-green);">&#x25CF;</span>&ensp;Refined spaces</h3>
+                    <p>Promoted improvements with Git-reviewable deltas. Every change is traceable, every promotion is earned.</p>
+                </div>
+            </div>
+
+            <div class="proof-row fragment fade-up" data-fragment-index="2">
+                <div class="proof-badge">Grounded evals</div>
+                <div class="proof-badge">MLflow scorecards</div>
+                <div class="proof-badge">Git-reviewable deltas</div>
+                <div class="proof-badge">Champion promotion</div>
+            </div>
+
+            <aside class="notes">
+                This matters because production credibility is not static. Spaces change,
+                expectations change, and the system needs a disciplined way to prove it is getting better.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: ARCHITECTURE -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-mesh noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <div class="slide-label">Under the hood</div>
+            <h2 class="animate-in d2" style="max-width: 880px; margin-bottom: 4px;">
+                Enterprise-shaped underneath.
+            </h2>
+            <p class="animate-in d3" style="max-width: 650px; margin-bottom: 0;">
+                Simple in front of the buyer.
+            </p>
+
+            <div class="arch-flow fragment fade-up" data-fragment-index="1">
+                <!-- LEFT: Inputs -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Data &amp; signals</div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>Source Tables</div>
+                        <div class="arch-block-desc">Schema, metadata, sample values</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>System Tables</div>
+                        <div class="arch-block-desc">Usage patterns, relevance, relationships</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">GitHub / Git</div>
+                        <div class="arch-block-desc">Branch-based variants, versioned builds</div>
+                    </div>
+                </div>
+
+                <!-- ARROW -->
+                <div class="arch-arrow-col">
+                    <div class="arch-arrow">
+                        <div class="arch-arrow-line"></div>
+                    </div>
+                </div>
+
+                <!-- CENTER: Engine -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Build engine</div>
+                    <div class="arch-center">
+                        <div class="arch-center-title">Genie<br>Universal Build Agent</div>
+                        <div class="arch-center-features">
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                History-aware build
+                            </div>
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                Semantic shaping
+                            </div>
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                Autotuning loop
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARROW -->
+                <div class="arch-arrow-col">
+                    <div class="arch-arrow">
+                        <div class="arch-arrow-line right"></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Outputs -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Outputs &amp; control</div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">MLflow</div>
+                        <div class="arch-block-desc">Runs, prompts, scores, candidate comparisons</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Semantic Layer</div>
+                        <div class="arch-block-desc">Business-readable isolation from raw tables</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>Genie Space</div>
+                        <div class="arch-block-desc">Improved baseline, cleaner semantics, trusted UX</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="notes">
+                Walk left to right: source data and system signals feed the build agent,
+                candidate variants are evaluated, and the strongest result is promoted back
+                into the Genie experience. AI is bounded inside a deterministic operating model.
+                Every artifact is reviewable. Every promotion is earned.
+            </aside>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: CTA -->
+    <section data-background-color="#06060b">
+        <div class="slide-inner bg-gold noise-overlay">
+            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
+            <div class="slide-label">Next step</div>
+            <h2 class="animate-in d2" style="max-width: 700px;">
+                One workshop.<br>
+                One <span class="accent-gold">pilot path.</span>
+            </h2>
+
+            <div class="cta-layout">
+                <div class="cta-left">
+                    <div class="cta-steps">
+                        <div class="cta-step">
+                            <span class="cta-num">01</span>
+                            <span class="cta-text">Choose the first business question your team wants Genie to answer.</span>
+                        </div>
+                        <div class="cta-step">
+                            <span class="cta-num">02</span>
+                            <span class="cta-text">Identify the source tables and semantic target.</span>
+                        </div>
+                        <div class="cta-step">
+                            <span class="cta-num">03</span>
+                            <span class="cta-text">Define what a trusted pilot looks like — together.</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 32px; font-style: italic; color: var(--text-muted); font-size: 0.85em;">
+                        Not an open-ended AI exploration.<br>
+                        A scoped workshop with a concrete plan.
+                    </p>
+                </div>
+
+                <div class="cta-form">
+                    <div class="cta-form-title">Book a workshop</div>
+                    <div class="cta-form-subtitle" style="color: var(--text-secondary);">We'll scope a pilot in one session.</div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Jane Smith">
+                    </div>
+                    <div class="form-group">
+                        <label>Work email</label>
+                        <input type="email" placeholder="jane@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" placeholder="Acme Corp">
+                    </div>
+                    <button class="form-submit" type="button">Request workshop</button>
+                </div>
+            </div>
+
+            <aside class="notes">
+                We are not asking for an open-ended AI exploration exercise.
+                We are proposing a scoped workshop that produces a concrete pilot plan.
+            </aside>
+        </div>
+    </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        transition: 'fade',
+        transitionSpeed: 'slow',
+        center: false,
+        controls: true,
+        controlsLayout: 'bottom-right',
+        progress: true,
+        slideNumber: false,
+        width: 1920,
+        height: 1080,
+        margin: 0,
+        minScale: 0.2,
+        maxScale: 3.0,
+        plugins: [RevealNotes]
+    });
+</script>
+
+</body>
+</html>
