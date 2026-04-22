@@ -34,19 +34,6 @@
         /* === REVEAL OVERRIDES === */
         .reveal-viewport {
             background: var(--bg-deep);
-            position: relative;
-        }
-
-        .reveal-viewport::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none;
-            z-index: 0;
         }
 
         .reveal {
@@ -67,7 +54,7 @@
 
         .reveal .slides > section > .slide-inner {
             width: 100%;
-            min-height: 1080px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -108,7 +95,7 @@
         }
 
         .reveal p {
-            font-size: 1.15em;
+            font-size: 1.2em;
             line-height: 1.55;
             color: var(--text-secondary);
             font-weight: 300;
@@ -140,7 +127,7 @@
 
         .brand-tag {
             font-family: var(--font-display);
-            font-size: 0.58em;
+            font-size: 0.72em;
             font-weight: 500;
             color: var(--text-muted);
             letter-spacing: 0.15em;
@@ -152,7 +139,7 @@
 
         .slide-label {
             font-family: var(--font-body);
-            font-size: 0.58em;
+            font-size: 0.72em;
             font-weight: 500;
             color: var(--accent-coral);
             letter-spacing: 0.08em;
@@ -219,41 +206,10 @@
         }
 
         .title-tagline {
-            font-size: 1.15em;
+            font-size: 1.2em;
             font-weight: 300;
             color: var(--text-muted);
-        }
-
-        .powered-by {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 4px;
-            margin-bottom: 24px;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-family: var(--font-body);
-            font-size: 0.58em;
-            font-weight: 300;
-            letter-spacing: 0.08em;
-            transition: color 0.4s, opacity 0.4s;
-            opacity: 0.45;
-        }
-
-        .powered-by:hover {
-            color: var(--text-secondary);
-            opacity: 0.85;
-        }
-
-        .powered-by-logo {
-            height: 14px;
-            width: auto;
-            filter: brightness(0.6);
-            transition: filter 0.4s;
-        }
-
-        .powered-by:hover .powered-by-logo {
-            filter: brightness(0.9);
+            font-style: italic;
         }
 
         .logo-mark {
@@ -294,7 +250,7 @@
 
         .card h3 {
             font-family: var(--font-display);
-            font-size: 0.78em;
+            font-size: 1.05em;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 12px;
@@ -399,7 +355,7 @@
 
         .pipeline-label {
             font-family: var(--font-body);
-            font-size: 0.58em;
+            font-size: 0.56em;
             font-weight: 500;
             color: var(--text-secondary);
             line-height: 1.3;
@@ -408,7 +364,7 @@
         .pipeline-status {
             font-size: 0.46em;
             font-weight: 600;
-            margin-top: 3px;
+            margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 0.06em;
         }
@@ -427,7 +383,7 @@
         }
 
         .score-label {
-            font-size: 0.58em;
+            font-size: 0.55em;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--text-muted);
@@ -481,13 +437,12 @@
         .loop-card.adjusted::after { background: var(--accent-green); }
 
         .loop-card h3 {
-            font-size: 0.78em;
+            font-size: 0.92em;
             margin-bottom: 12px;
-            color: #ffffff;
         }
 
         .loop-card p {
-            font-size: 0.78em;
+            font-size: 0.68em;
             margin: 0;
             line-height: 1.6;
         }
@@ -516,7 +471,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: 100px;
-            font-size: 0.78em;
+            font-size: 0.68em;
             font-weight: 500;
             color: var(--text-secondary);
         }
@@ -549,7 +504,7 @@
 
         .arch-col-label {
             font-family: var(--font-body);
-            font-size: 0.58em;
+            font-size: 0.48em;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.12em;
@@ -570,7 +525,7 @@
 
         .arch-block-name {
             font-family: var(--font-display);
-            font-size: 0.78em;
+            font-size: 0.68em;
             font-weight: 700;
             color: var(--text-primary);
             line-height: 1.2;
@@ -578,7 +533,7 @@
         }
 
         .arch-block-desc {
-            font-size: 0.46em;
+            font-size: 0.5em;
             color: var(--text-muted);
             line-height: 1.45;
             font-weight: 400;
@@ -613,7 +568,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.58em;
+            font-size: 0.54em;
             color: var(--text-secondary);
             font-weight: 400;
         }
@@ -702,7 +657,7 @@
         }
 
         .cta-text {
-            font-size: 1.15em;
+            font-size: 1.1em;
             color: var(--text-primary);
             font-weight: 400;
             line-height: 1.5;
@@ -721,14 +676,14 @@
 
         .cta-form-title {
             font-family: var(--font-display);
-            font-size: 0.78em;
+            font-size: 0.92em;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 4px;
         }
 
         .cta-form-subtitle {
-            font-size: 0.58em;
+            font-size: 0.6em;
             color: var(--text-muted);
             margin-bottom: 6px;
             line-height: 1.5;
@@ -741,7 +696,7 @@
         }
 
         .form-group label {
-            font-size: 0.58em;
+            font-size: 0.52em;
             font-weight: 500;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -754,7 +709,7 @@
             border-radius: 10px;
             padding: 12px 16px;
             font-family: var(--font-body);
-            font-size: 0.58em;
+            font-size: 0.62em;
             color: var(--text-primary);
             outline: none;
             transition: border-color 0.25s;
@@ -775,7 +730,7 @@
             border-radius: 10px;
             padding: 14px 24px;
             font-family: var(--font-display);
-            font-size: 0.78em;
+            font-size: 0.68em;
             font-weight: 700;
             cursor: pointer;
             transition: opacity 0.25s;
@@ -784,284 +739,6 @@
 
         .form-submit:hover {
             opacity: 0.85;
-        }
-
-        /* === DEMO === */
-        .demo-embed {
-            width: 100%;
-            max-width: 1000px;
-            aspect-ratio: 16 / 9;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-subtle);
-        }
-
-        .demo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.03);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .demo-placeholder-icon {
-            font-size: 2.4em;
-            color: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        .demo-placeholder-text {
-            font-family: var(--font-body);
-            font-size: 0.58em;
-            color: var(--text-muted);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        /* === ARCHITECTURE TABS === */
-        .arch-tabs {
-            display: flex;
-            gap: 0;
-            margin-bottom: 20px;
-        }
-
-        .arch-tab {
-            font-family: var(--font-body);
-            font-size: 0.52em;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            padding: 8px 22px;
-            border: 1px solid var(--border-subtle);
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .arch-tab:first-child { border-radius: 8px 0 0 8px; }
-        .arch-tab:last-child { border-radius: 0 8px 8px 0; }
-
-        .arch-tab.active {
-            background: rgba(255,255,255,0.06);
-            color: var(--text-primary);
-            border-color: var(--border-accent);
-        }
-
-        .arch-panel {
-            display: none;
-            width: 100%;
-            height: 520px;
-        }
-
-        .arch-panel.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* === OVERALL ARCHITECTURE DIAGRAM === */
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            width: 100%;
-            max-width: 1400px;
-            margin-top: 40px;
-        }
-
-        .flow-node {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 22px 36px;
-            border-radius: 12px;
-            font-family: var(--font-body);
-            font-size: 0.62em;
-            font-weight: 500;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .flow-node-green {
-            background: rgba(84,184,126,0.10);
-            border: 1.5px solid rgba(84,184,126,0.45);
-            color: var(--accent-green);
-        }
-
-        .flow-node-coral {
-            background: rgba(186,83,128,0.10);
-            border: 1.5px solid rgba(186,83,128,0.45);
-            color: var(--accent-coral);
-        }
-
-        .flow-node-blue {
-            background: rgba(91,141,239,0.08);
-            border: 1.5px solid rgba(91,141,239,0.45);
-            color: var(--accent-blue);
-        }
-
-        .flow-arrow {
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            color: var(--accent-gold);
-            font-size: 0.72em;
-            letter-spacing: 3px;
-            flex-shrink: 0;
-        }
-
-        .flow-loop {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .flow-loop-arrow {
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateX(-100%);
-            width: 24px;
-            height: 60px;
-        }
-
-        .flow-loop-connector {
-            position: absolute;
-            right: -14px;
-            top: 12px;
-            bottom: 12px;
-            width: 30px;
-            border: 1.5px dashed rgba(186,83,128,0.4);
-            border-left: none;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* === DETAILED ARCHITECTURE DIAGRAM === */
-        .detail-diagram {
-            position: relative;
-            width: 100%;
-            max-width: 1400px;
-            height: 480px;
-            margin: 20px auto 0;
-        }
-
-        .detail-node {
-            position: absolute;
-            border-radius: 10px;
-            padding: 14px 18px;
-            font-family: var(--font-body);
-        }
-
-        .detail-node-title {
-            font-size: 0.48em;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .detail-node-desc {
-            font-size: 0.38em;
-            font-weight: 300;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        .detail-node-badge {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.32em;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .node-blue {
-            border: 1.5px solid #7EA6E0;
-            background: rgba(49,216,254,0.06);
-        }
-
-        .node-red {
-            border: 1.5px solid #EA6B66;
-            background: rgba(255,100,100,0.08);
-        }
-
-        .node-green {
-            border: 1.5px solid #66FFB3;
-            background: rgba(0,206,147,0.06);
-        }
-
-        .node-orange {
-            border: 1.5px solid rgba(255,109,0,0.55);
-            background: rgba(255,109,0,0.06);
-        }
-
-        .node-gray {
-            border: 1.5px solid var(--border-accent);
-            background: rgba(255,255,255,0.03);
-        }
-
-        .detail-edge-label {
-            position: absolute;
-            font-family: var(--font-body);
-            font-size: 0.34em;
-            font-weight: 400;
-            color: var(--text-muted);
-            white-space: nowrap;
-        }
-
-        .detail-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        @keyframes dash-flow {
-            to { stroke-dashoffset: -20; }
-        }
-
-        .edge-animated {
-            animation: dash-flow 1.2s linear infinite;
-        }
-
-        @keyframes dash-flow-reverse {
-            to { stroke-dashoffset: 20; }
-        }
-
-        .edge-animated-rev {
-            animation: dash-flow-reverse 1.2s linear infinite;
-        }
-
-        /* === NAV HINT === */
-        .nav-hint {
-            position: fixed;
-            bottom: 28px;
-            right: 140px;
-            font-family: var(--font-body);
-            font-size: 1.36em;
-            font-weight: 300;
-            color: var(--text-muted);
-            letter-spacing: 0.08em;
-            pointer-events: none;
-            opacity: 0.7;
-            transition: opacity 0.6s ease;
-            z-index: 30;
-        }
-
-        .nav-hint.hidden {
-            opacity: 0;
         }
 
         /* === FRAGMENTS === */
@@ -1103,8 +780,6 @@
 </head>
 <body>
 
-<div class="nav-hint" id="navHint">Use the arrow keys to navigate through the slides</div>
-
 <div class="reveal">
 <div class="slides">
 
@@ -1115,10 +790,7 @@
                 <img class="logo-img" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMzg0LjAwMDAwMHB0IiBoZWlnaHQ9IjI1Ni4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDM4NC4wMDAwMDAgMjU2LjAwMDAwMCIKIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMjU2LjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIKZmlsbD0iI0JBNTM4MCIgc3Ryb2tlPSJub25lIj4KPHBhdGggZD0iTTI0NDIgMjMyMCBjLTUyIC0zMiAtNzQgLTc2IC02OSAtMTM4IDIgLTM0IDEyIC02MyAyNiAtODIgMTIgLTE3IDE3Ci0zMCAxMiAtMzAgLTE5IDAgLTcwIDYxIC04NCAxMDIgbC0xNSA0MyAtMSAtMzUgYy0xIC02MCAxNyAtMTA2IDU5IC0xNDQgODgKLTc5IDI1MCAtODggNDIwIC0yMSAxOTggNzcgMjYzIDk3IDMzNSAxMDIgMTY2IDEzIDI4NyAtNTkgMzM3IC0yMDAgbDE5IC01MgotNiA1NSBjLTkgODEgLTU3IDE3MyAtMTEyIDIxNSAtNjkgNTMgLTEzNSA2OCAtMjYyIDYzIC05NCAtNSAtMTIwIC0xMCAtMjMxCi01MSAtMjA5IC03NiAtMjYxIC04MyAtMzM2IC00NyAtNTggMjggLTgyIDc3IC02MiAxMjcgNyAyMCAyNSA0NSAzOSA1NiAzMyAyNAoxMDcgMzMgMTQ4IDE5IDQ1IC0xNiAzOCAtNCAtMTEgMTggLTU5IDI3IC0xNjIgMjcgLTIwNiAweiIvPgo8cGF0aCBkPSJNMTkzOSAyMTU5IGMtMSAtODEgLTIgLTgzIC0xMyAtNDUgbC0xMiAzOSAtMTMgLTMwIGMtMzEgLTc1IC01IC0xNDMKNTQgLTE0MyAyOSAwIDM5IDYgNTUgMzMgMTEgMTcgMjAgNDMgMjAgNTcgMCAzMSAtMjkgOTMgLTY0IDEzOSBsLTI2IDM1IC0xCi04NXoiLz4KPHBhdGggZD0iTTMwMjUgMjA1MiBsLTUwIC0xNiA3NiAtNyBjODAgLTcgMTAzIC0xNSAxMzMgLTQ4IDI2IC0yOSAxNSAtNzYgLTE3Ci02NiAtMTIgNCAtNTcgOSAtMTAwIDEyIC0xMDEgNyAtMTM0IC02IC0yNzkgLTEwOSAtMTI1IC04OSAtMTQ2IC0xMDEgLTIyNwotMTMxIC01NCAtMjEgLTc1IC0yMiAtNTczIC0yNSAtMjg1IC0yIC01MTggLTQgLTUxOSAtNSAwIC0xIC0xNSAtMTA4IC0zMwotMjM3IC0yOSAtMjA0IC0zMSAtMjM2IC0xOCAtMjQ1IDc3IC01MyAxMDMgLTgwIDEyNyAtMTMyIDI0IC01MCAyNyAtNjYgMjMKLTEzMiAtNSAtODIgLTIwIC0xMjAgLTY5IC0xNzYgbC0zMSAtMzUgNTQgMCBjNDggMCA2OSA4IDE1OSA1NiA1NyAzMSAxMjQgNzIKMTQ5IDkxIDcyIDU0IDI3OSAyMjcgMjc2IDIzMCAtMSAxIC0yOSAtMiAtNjIgLTcgLTExMCAtMTggLTI3MSAtOCAtMzQ2IDIzCi0yNSAxMCAtMyAxMSAxMjYgOSAxNzYgLTQgMjczIDEwIDQxNCA1OSAxOTAgNjYgMzE1IDE3MSA0OTcgNDE0IDE1NyAyMTEgMjM2CjI3NSAzMzkgMjc1IDU5IDAgMTAwIC0yMSAxMTYgLTU5IDE3IC00MiA1IC04MiAtMzggLTEyMyAtNDggLTQ2IC01NiAtNTAgLTE4NQotODcgLTE5NyAtNTcgLTI4MiAtMTE4IC0yODIgLTIwMyAwIC04MiA5NiAtMTE4IDE1NiAtNTkgMzggMzkgMzggNzUgLTEgMTExCmwtMzAgMjggNjIgMjEgYzM1IDExIDExOSAzMiAxODcgNDYgMjEzIDQ1IDI4NSA4MiAzMzYgMTc2IDczIDEzMyAxMyAzMDUgLTEyNAozNTQgLTU2IDIwIC0xODEgMTggLTI0NiAtM3ogbS0zNzQgLTQ4NiBjLTE1OSAtMjA1IC0zOTQgLTMyNSAtNjkzIC0zNTEgLTg3Ci04IC0xMTAgOCAtMjggMTkgMTU1IDIxIDM2MiA5NiA0ODggMTc5IDc3IDUwIDIxMCAxNTYgMjQ2IDE5NiAzOCA0MiAyOCAxMQotMTMgLTQzeiBtLTc0NiAzNiBjLTYgLTUgLTc3IC0xNyAtMTYwIC0yNiAtMjAzIC0yNCAtMTg5IC0xOSAtMjE5IC04NCBsLTI1Ci01NyA1IDcwIGMzIDM5IDcgNzYgOSA4MiAzIDkgNDkgMTMgMTY3IDE2IDkwIDEgMTc5IDQgMTk4IDUgMTkgMSAzMCAtMiAyNSAtNnoiLz4KPHBhdGggZD0iTTE4NjYgMTg3MyBjLTU3IC01NiAtNTggLTU3IC0zNyAtMTkgMzggNjggMCA2MSAtNzMgLTEzIGwtNDggLTQ5CjE0NCAtNyBjNzggLTQgMTcyIC0xMSAyMDggLTE2IDg3IC0xMiAyNjMgLTEyIDI1NSAwIC0zIDUgLTMxIDIxIC02MiAzNiAtMzEKMTQgLTgwIDQ4IC0xMDkgNzUgbC01MyA1MCAtODMgMCAtODMgMCAtNTkgLTU3eiIvPgo8cGF0aCBkPSJNNDkwIDE2MTAgYzE0NyAtMjA2IDQwNiAtMzQ5IDczOCAtNDA4IGwxMTIgLTE5IDAgMjEzIDAgMjE0IC02NCAwCi02NCAwIC0xOCAtMTIwIGMtMTAgLTY2IC0yMCAtMTIwIC0yNCAtMTIwIC0zIDAgLTE0IDI0IC0yMyA1NCAtMTYgNTAgLTIwIDU0Ci01NSA2MSAtMTQ3IDI2IC0zODAgODIgLTQ4NSAxMTUgLTY5IDIyIC0xMjggNDAgLTEzMiA0MCAtMyAwIDMgLTEzIDE1IC0zMHoiLz4KPHBhdGggZD0iTTY4NSAxNjA5IGMyMiAtNSAxMDggLTIzIDE5MCAtMzkgMjUzIC00OCAyNjUgLTQ4IDIzMyAtOCAtMTAgMTEgLTU4CjE5IC0xOTggMzIgLTEwMiAxMCAtMjAzIDE5IC0yMjUgMjIgbC00MCA0IDQwIC0xMXoiLz4KPHBhdGggZD0iTTIzMDYgMTEzOSBjLTM4IC0xNiAtOTYgLTUyIC0xMzAgLTgwIC02MiAtNTIgLTQ3NSAtMzgzIC01MzUgLTQyOQpsLTMyIC0yNSAzIC04MiAzIC04MiA0NSAyOCBjOTQgNTkgMTU1IDc1IDI4MCA3NSAxMjkgMSAxNzkgLTExIDI3NCAtNjkgbDU2Ci0zNCAwIDg3IC0xIDg3IC0xMzQgMTEwIGMtNzQgNjEgLTEzNCAxMTQgLTEzNSAxMTggMCAxMSA3OCAtMzUgMTk1IC0xMTUgbDEwMQotNjggMTQ5IDAgMTUwIDAgLTY4IDM4IGMtODAgNDQgLTEzNyA5NyAtMTc1IDE2MCAtMjMgNDEgLTI3IDU4IC0yNyAxMjcgMCA2OAo0IDg5IDI3IDEzMyAxNSAyOSAyNiA1MiAyNSA1MSAtMSAtMSAtMzMgLTE0IC03MSAtMzB6Ii8+CjxwYXRoIGQ9Ik0xMzc2IDU2NiBsLTEzOSAtMzIgLTI4IC01NyAtMjkgLTU3IDE5MCAwIDE5MCAwIDAgOTAgYzAgMTA3IDE4IDEwMgotMTg0IDU2eiIvPgo8cGF0aCBkPSJNMjMyMCA1MTAgbDAgLTkwIDE5MyAwIDE5MiAwIC0zIDkwIC0zIDkwIC0xOTAgMCAtMTg5IDAgMCAtOTB6Ii8+CjwvZz4KPC9zdmc+Cg==" alt="Genie Forge">
             </div>
             <h1 class="animate-in d2">Genie Forge</h1>
-            <a href="https://t1a.com" target="_blank" rel="noopener" class="powered-by animate-in d3">
-                powered by <img class="powered-by-logo" src="t1a%20LOGO.svg" alt="T1A">
-            </a>
-            <p class="title-tagline animate-in d4">Trust at the speed of launch</p>
+            <p class="title-tagline animate-in d3">Trust at the speed of launch</p>
             <aside class="notes">
                 Welcome. Today we're going to talk about why the hardest part of AI-powered analytics
                 isn't building the experience — it's building trust in the experience.
@@ -1155,18 +827,18 @@
             <div class="three-col">
                 <div class="card fragment fade-up" data-fragment-index="1">
                     <div class="card-icon coral">&#x26A0;</div>
-                    <h3>False Simplicity</h3>
-                    <p>Launching Genie is easy, but setting it up well is not obvious, it requires proper expertise.</p>
+                    <h3>No quality loop</h3>
+                    <p>Answers go live without grounded evaluation. No baseline, no score, no way to know if what shipped is trustworthy.</p>
                 </div>
                 <div class="card fragment fade-up" data-fragment-index="2">
                     <div class="card-icon coral">&#x270D;</div>
-                    <h3>Routine Validation</h3>
-                    <p>Roughly 75% of the effort happens after setup, when teams test real questions, compare ground truth, and tune answers.</p>
+                    <h3>Manual authoring</h3>
+                    <p>Business framing, instructions, joins, and context assembled by hand every time. Fragile. Inconsistent. Unrepeatable.</p>
                 </div>
                 <div class="card fragment fade-up" data-fragment-index="3">
                     <div class="card-icon coral">&#x2699;</div>
-                    <h3>Weeks, Not Clicks</h3>
-                    <p>One trusted space can take 4-6 weeks of SME-led setup, evaluation, and iterative tuning before production.</p>
+                    <h3>Raw warehouse complexity</h3>
+                    <p>No semantic buffer between warehouse tables and the Genie experience. One schema change breaks the space.</p>
                 </div>
             </div>
             <aside class="notes">
@@ -1177,167 +849,11 @@
         </div>
     </section>
 
-    <!-- SLIDE 3: THE SOLUTION -->
+    <!-- SLIDE 3: THE BUILD LINE -->
     <section data-background-color="#06060b">
         <div class="slide-inner bg-solve noise-overlay">
             <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
             <div class="slide-label">The solution</div>
-            <h2 class="animate-in d2" style="max-width: 880px;">
-                Automated Agentic Setup &amp; <span class="accent-green">Optimization</span>
-            </h2>
-            <p class="animate-in d3" style="max-width: 750px; color: var(--text-secondary); margin-bottom: 18px;">
-                From raw tables to a trusted Genie Space — setup, evaluate, refine automatically.
-            </p>
-
-            <div class="animate-in d4">
-                <div class="arch-tabs">
-                    <button class="arch-tab active" onclick="switchArchTab(0)">Overall Architecture</button>
-                    <button class="arch-tab" onclick="switchArchTab(1)">Detailed Architecture</button>
-                </div>
-
-                <!-- TAB 1: OVERALL -->
-                <div class="arch-panel active" id="archPanel0">
-                    <div class="flow-diagram">
-                        <div class="flow-node flow-node-green">Historical Usage</div>
-                        <svg width="80" height="20" viewBox="0 0 80 20" style="flex-shrink:0;" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0,10 L68,10" stroke="var(--accent-gold)" stroke-width="2" stroke-dasharray="6 4" class="edge-animated"/>
-                            <path d="M62,5 L72,10 L62,15" stroke="var(--accent-gold)" stroke-width="2" fill="none"/>
-                        </svg>
-                        <div class="flow-node flow-node-green">AI-Powered Setup</div>
-                        <svg width="80" height="20" viewBox="0 0 80 20" style="flex-shrink:0;" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0,10 L68,10" stroke="var(--accent-gold)" stroke-width="2" stroke-dasharray="6 4" class="edge-animated"/>
-                            <path d="M62,5 L72,10 L62,15" stroke="var(--accent-gold)" stroke-width="2" fill="none"/>
-                        </svg>
-                        <div style="display:flex;flex-direction:column;align-items:center;position:relative;flex-shrink:0;margin:0 50px;">
-                            <div class="flow-node flow-node-coral" style="min-width:180px;">Eval</div>
-                            <div style="height:24px;"></div>
-                            <div class="flow-node flow-node-coral" style="min-width:180px;">Autorefinement</div>
-                            <!-- Left loop: Autorefinement -> Eval -->
-                            <svg width="100" height="240" viewBox="0 0 100 240" style="position:absolute;left:-98px;top:-34px;" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M98 200 C10 200 10 40 98 40" stroke="rgba(186,83,128,0.55)" stroke-width="2" stroke-dasharray="6 4" fill="none" class="edge-animated-rev"/>
-                                <path d="M93 35 L98 40 L93 45" stroke="rgba(186,83,128,0.55)" stroke-width="2" fill="none"/>
-                            </svg>
-                            <!-- Right loop: Eval -> Autorefinement -->
-                            <svg width="100" height="240" viewBox="0 0 100 240" style="position:absolute;right:-98px;top:-34px;" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 40 C90 40 90 200 2 200" stroke="rgba(186,83,128,0.55)" stroke-width="2" stroke-dasharray="6 4" fill="none" class="edge-animated"/>
-                                <path d="M7 195 L2 200 L7 205" stroke="rgba(186,83,128,0.55)" stroke-width="2" fill="none"/>
-                            </svg>
-                        </div>
-                        <svg width="80" height="20" viewBox="0 0 80 20" style="flex-shrink:0;margin-left:8px;" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0,10 L68,10" stroke="var(--accent-blue)" stroke-width="2" stroke-dasharray="6 4" class="edge-animated"/>
-                            <path d="M62,5 L72,10 L62,15" stroke="var(--accent-blue)" stroke-width="2" fill="none"/>
-                        </svg>
-                        <div class="flow-node flow-node-blue">Optimized Genie Space</div>
-                    </div>
-                </div>
-
-                <!-- TAB 2: DETAILED -->
-                <div class="arch-panel" id="archPanel1">
-                    <div class="detail-diagram">
-                        <svg class="detail-svg" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <marker id="ah-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7" fill="#9EDFFF"/></marker>
-                                <marker id="ah-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,3.5 L0,7" fill="#8FF2D0"/></marker>
-                                <marker id="ah-white" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><path d="M0,0 L10,3.5 L0,7" fill="rgba(252,252,252,0.6)"/></marker>
-                            </defs>
-
-                            <!-- Source Tables -> Agent (orthogonal) -->
-                            <path d="M170,90 L300,90 L300,220 L428,220" stroke="#9EDFFF" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ah-cyan)" class="edge-animated"/>
-
-                            <!-- System Tables -> Agent (orthogonal) -->
-                            <path d="M170,330 L300,330 L300,275 L428,275" stroke="#9EDFFF" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ah-cyan)" class="edge-animated"/>
-
-                            <!-- Agent -> GitHub (vertical, arrow points UP) -->
-                            <path d="M590,183 L590,102" stroke="#9EDFFF" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ah-cyan)" class="edge-animated"/>
-
-                            <!-- Agent -> Semantic Layer (vertical) -->
-                            <path d="M580,320 L580,388" stroke="#9EDFFF" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ah-cyan)" class="edge-animated"/>
-
-                            <!-- Agent -> MLflow (evaluate a new variant) -->
-                            <path d="M740,215 L920,215 L920,95 L1098,95" stroke="#8FF2D0" stroke-width="3.5" stroke-dasharray="14 8" fill="none" marker-end="url(#ah-green)" class="edge-animated"/>
-
-                            <!-- MLflow -> Agent (evaluation score feedback) -->
-                            <path d="M1235,165 L1235,280 L740,280" stroke="#8FF2D0" stroke-width="3.5" stroke-dasharray="14 8" fill="none" marker-end="url(#ah-green)" class="edge-animated-rev"/>
-
-                            <!-- Semantic Layer -> Genie Space (horizontal) -->
-                            <path d="M730,430 L1058,430" stroke="rgba(252,252,252,0.3)" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#ah-white)" class="edge-animated"/>
-
-                            <!-- Promote -> Genie Space (L-shape down then right) -->
-                            <path d="M920,295 L920,365 L1058,365" stroke="rgba(252,252,252,0.5)" stroke-width="3" stroke-dasharray="8 6" fill="none" marker-end="url(#ah-white)" class="edge-animated"/>
-                        </svg>
-
-                        <!-- Databricks Source Tables -->
-                        <div class="detail-node node-blue" style="left:-80px;top:35px;width:250px;">
-                            <div class="detail-node-badge" style="background:#31D8FE;">D</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">Databricks - Source Tables</div>
-                            <div class="detail-node-desc">Raw business data<br>Schema, metadata, samples</div>
-                        </div>
-
-                        <!-- Databricks System Tables -->
-                        <div class="detail-node node-blue" style="left:-80px;top:275px;width:250px;">
-                            <div class="detail-node-badge" style="background:#31D8FE;">D</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">Databricks - System Tables</div>
-                            <div class="detail-node-desc">Usage patterns<br>Relevance and relationships</div>
-                        </div>
-
-                        <!-- GitHub / Git -->
-                        <div class="detail-node node-orange" style="left:460px;top:0;width:260px;">
-                            <div class="detail-node-badge" style="background:#FF6D00;">GH</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">GitHub / Git</div>
-                            <div class="detail-node-desc">Branch-based workspace variants<br>Versioned candidate builds</div>
-                        </div>
-
-                        <!-- Genie Forge Agent -->
-                        <div class="detail-node node-red" style="left:430px;top:185px;width:308px;">
-                            <div class="detail-node-badge" style="background:#EA6B66;">T1A</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">Genie Forge Agent</div>
-                            <div class="detail-node-desc">- History-aware build<br>- Semantic shaping<br>- Autorefinement loop</div>
-                        </div>
-
-                        <!-- Semantic Layer -->
-                        <div class="detail-node node-gray" style="left:420px;top:390px;width:308px;">
-                            <div class="detail-node-badge" style="background:rgba(255,255,255,0.25);">D</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">Semantic Layer</div>
-                            <div class="detail-node-desc">Business-readable shaping between<br>raw tables and Genie</div>
-                        </div>
-
-                        <!-- MLflow -->
-                        <div class="detail-node node-green" style="left:1100px;top:55px;width:270px;">
-                            <div class="detail-node-badge" style="background:#00CE93;">ML</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">MLflow</div>
-                            <div class="detail-node-desc">Experiment tracking<br>Runs, prompts, scores, comparisons</div>
-                        </div>
-
-                        <!-- Databricks Genie Space -->
-                        <div class="detail-node node-orange" style="left:1060px;top:330px;width:300px;">
-                            <div class="detail-node-badge" style="background:#FF6D00;">D</div>
-                            <div class="detail-node-title" style="color:var(--text-primary);">Databricks - Genie Space</div>
-                            <div class="detail-node-desc">- Improved baseline<br>- Cleaner semantic layer<br>- Trusted user experience</div>
-                        </div>
-
-                        <!-- Edge labels -->
-                        <span class="detail-edge-label" style="left:228px;top:62px;">Automatic profile<br>source data</span>
-                        <span class="detail-edge-label" style="left:228px;top:340px;">Extract historical<br>patterns</span>
-                        <span class="detail-edge-label" style="left:600px;top:120px;">Branch and<br>version variants</span>
-                        <span class="detail-edge-label" style="left:598px;top:345px;">Semantic isolation</span>
-                        <span class="detail-edge-label" style="left:840px;top:190px;">Evaluate a new variant</span>
-                        <span class="detail-edge-label" style="left:1000px;top:258px;">Evaluation score of the variant</span>
-                        <span class="detail-edge-label" style="left:930px;top:320px;">Promote strongest candidate</span>
-                    </div>
-                </div>
-            </div>
-
-            <aside class="notes">
-                Architecture overview slide with tabbed overall and detailed views.
-            </aside>
-        </div>
-    </section>
-
-    <!-- SLIDE 4: THE FLOW -->
-    <section data-background-color="#06060b">
-        <div class="slide-inner bg-mesh noise-overlay">
-            <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
-            <div class="slide-label">The flow</div>
             <h2 class="animate-in d2" style="max-width: 800px;">
                 Setup becomes an <span class="accent-green">auditable build&nbsp;line.</span>
             </h2>
@@ -1389,42 +905,44 @@
 
             <aside class="notes">
                 The differentiator is not automation by itself. The differentiator is that every stage
-                is explicit, reviewable, and easy to reason about.
+                is explicit, reviewable, and easy to reason about. Read-only discovery. Deterministic semantic build.
+                Git-backed authoring and deploy. Operator visibility. Managed autorefine.
             </aside>
         </div>
     </section>
 
-    <!-- SLIDE 5: DURABLE VALUE -->
+    <!-- SLIDE 4: THE TRUST LOOP -->
     <section data-background-color="#06060b">
         <div class="slide-inner bg-solve noise-overlay">
             <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
             <div class="slide-label">Durable value</div>
             <h2 class="animate-in d2" style="max-width: 850px;">
-                Three ways Genie Forge creates <span class="accent-green">measurable value.</span>
+                Trust isn't a launch event.<br>
+                It becomes a <span class="accent-green">measurable loop.</span>
             </h2>
 
             <div class="loop-flow fragment fade-up" data-fragment-index="1">
                 <div class="loop-card new">
-                    <h3><span style="color: var(--accent-blue);">&#x25CF;</span>&ensp;Faster Setup</h3>
-                    <p>Reduces initial Genie Space setup effort by roughly 60-70%, typically saving 15-20 hours per each space.</p>
+                    <h3><span style="color: var(--accent-blue);">&#x25CF;</span>&ensp;New spaces</h3>
+                    <p>First build from source tables to trusted Genie experience. Full pipeline, grounded evals, baseline score.</p>
                 </div>
                 <div class="loop-arrow">&#x2192;</div>
                 <div class="loop-card existing">
-                    <h3><span style="color: var(--accent-gold);">&#x25CF;</span>&ensp;Usage-Led Design</h3>
-                    <p>Using real table usage patterns, the system builds a space around business questions and raises responses accuracy by 10-15%.</p>
+                    <h3><span style="color: var(--accent-gold);">&#x25CF;</span>&ensp;Live spaces</h3>
+                    <p>Continuous monitoring. Drift detection. Autorefine candidates tested against the current champion.</p>
                 </div>
                 <div class="loop-arrow">&#x2192;</div>
                 <div class="loop-card adjusted">
-                    <h3><span style="color: var(--accent-green);">&#x25CF;</span>&ensp;Autorefinement</h3>
-                    <p>"Autoresearch"-like approach tests and refines the initial Genie Space configuration, improving answer reliability and delivering an additional 5-10% accuracy uplift.</p>
+                    <h3><span style="color: var(--accent-green);">&#x25CF;</span>&ensp;Refined spaces</h3>
+                    <p>Promoted improvements with Git-reviewable deltas. Every change is traceable, every promotion is earned.</p>
                 </div>
             </div>
 
             <div class="proof-row fragment fade-up" data-fragment-index="2">
-                <div class="proof-badge">60-70% effort reduction</div>
-                <div class="proof-badge">15-20 hours saved per space</div>
-                <div class="proof-badge">10-15% accuracy gain</div>
-                <div class="proof-badge">5-10% additional uplift</div>
+                <div class="proof-badge">Grounded evals</div>
+                <div class="proof-badge">MLflow scorecards</div>
+                <div class="proof-badge">Git-reviewable deltas</div>
+                <div class="proof-badge">Champion promotion</div>
             </div>
 
             <aside class="notes">
@@ -1434,36 +952,107 @@
         </div>
     </section>
 
-    <!-- SLIDE 6: DEMO -->
+    <!-- SLIDE 5: ARCHITECTURE -->
     <section data-background-color="#06060b">
-        <div class="slide-inner bg-warm noise-overlay">
+        <div class="slide-inner bg-mesh noise-overlay">
             <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
-            <div class="slide-label">Demo</div>
-            <h2 class="animate-in d2" style="max-width: 800px;">
-                See Genie Forge <span class="accent-coral">in action.</span>
+            <div class="slide-label">Under the hood</div>
+            <h2 class="animate-in d2" style="max-width: 880px; margin-bottom: 4px;">
+                Enterprise-shaped underneath.
             </h2>
-            <p class="animate-in d3" style="max-width: 650px; margin-bottom: 24px;">
-                From raw tables to a trusted Genie Space — the full setup and refinement workflow.
+            <p class="animate-in d3" style="max-width: 650px; margin-bottom: 0;">
+                Simple in front of the buyer.
             </p>
-            <div class="demo-embed animate-in d4">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">&#9654;</div>
-                    <div class="demo-placeholder-text">Demo video coming soon</div>
+
+            <div class="arch-flow fragment fade-up" data-fragment-index="1">
+                <!-- LEFT: Inputs -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Data &amp; signals</div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>Source Tables</div>
+                        <div class="arch-block-desc">Schema, metadata, sample values</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>System Tables</div>
+                        <div class="arch-block-desc">Usage patterns, relevance, relationships</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">GitHub / Git</div>
+                        <div class="arch-block-desc">Branch-based variants, versioned builds</div>
+                    </div>
+                </div>
+
+                <!-- ARROW -->
+                <div class="arch-arrow-col">
+                    <div class="arch-arrow">
+                        <div class="arch-arrow-line"></div>
+                    </div>
+                </div>
+
+                <!-- CENTER: Engine -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Build engine</div>
+                    <div class="arch-center">
+                        <div class="arch-center-title">Genie<br>Universal Build Agent</div>
+                        <div class="arch-center-features">
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                History-aware build
+                            </div>
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                Semantic shaping
+                            </div>
+                            <div class="arch-feature">
+                                <div class="arch-feature-dot"></div>
+                                Autotuning loop
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARROW -->
+                <div class="arch-arrow-col">
+                    <div class="arch-arrow">
+                        <div class="arch-arrow-line right"></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Outputs -->
+                <div class="arch-col">
+                    <div class="arch-col-label">Outputs &amp; control</div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">MLflow</div>
+                        <div class="arch-block-desc">Runs, prompts, scores, candidate comparisons</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Semantic Layer</div>
+                        <div class="arch-block-desc">Business-readable isolation from raw tables</div>
+                    </div>
+                    <div class="arch-block">
+                        <div class="arch-block-name">Databricks<br>Genie Space</div>
+                        <div class="arch-block-desc">Improved baseline, cleaner semantics, trusted UX</div>
+                    </div>
                 </div>
             </div>
+
             <aside class="notes">
-                Live walkthrough of the end-to-end build pipeline.
+                Walk left to right: source data and system signals feed the build agent,
+                candidate variants are evaluated, and the strongest result is promoted back
+                into the Genie experience. AI is bounded inside a deterministic operating model.
+                Every artifact is reviewable. Every promotion is earned.
             </aside>
         </div>
     </section>
 
-    <!-- SLIDE 7: CTA -->
+    <!-- SLIDE 6: CTA -->
     <section data-background-color="#06060b">
         <div class="slide-inner bg-gold noise-overlay">
             <div class="brand-tag"><img class="brand-logo" src="logo_black.svg" alt="">Genie Forge</div>
             <div class="slide-label">Next step</div>
             <h2 class="animate-in d2" style="max-width: 700px;">
-                Every team gets a Genie they can <span class="accent-gold">trust.</span>
+                One workshop.<br>
+                One <span class="accent-gold">pilot path.</span>
             </h2>
 
             <div class="cta-layout">
@@ -1471,40 +1060,45 @@
                     <div class="cta-steps">
                         <div class="cta-step">
                             <span class="cta-num">01</span>
-                            <span class="cta-text">Learn how trusted Genie setup actually works.</span>
+                            <span class="cta-text">Choose the first business question your team wants Genie to answer.</span>
                         </div>
                         <div class="cta-step">
                             <span class="cta-num">02</span>
-                            <span class="cta-text">Enable your teams with Genie Forge and a repeatable model.</span>
+                            <span class="cta-text">Identify the source tables and semantic target.</span>
                         </div>
                         <div class="cta-step">
                             <span class="cta-num">03</span>
-                            <span class="cta-text">Let us co-build or deliver the first trusted spaces for you.</span>
+                            <span class="cta-text">Define what a trusted pilot looks like — together.</span>
                         </div>
                     </div>
-                    <p style="margin-top: 32px; font-style: italic; color: var(--text-muted); font-size: 0.78em;">
-                        Not one fixed delivery model.<br>
-                        We equip your team, build with them, or deliver the first trusted rollout.
+                    <p style="margin-top: 32px; font-style: italic; color: var(--text-muted); font-size: 0.85em;">
+                        Not an open-ended AI exploration.<br>
+                        A scoped workshop with a concrete plan.
                     </p>
                 </div>
 
-                <div class="cta-form">
-                    <div class="cta-form-title">Plan your Genie rollout</div>
-                    <div class="cta-form-subtitle" style="color: var(--text-secondary);">We'll scope the right enablement model for your teams, use cases, and goals.</div>
+                <form class="cta-form" id="workshop-form" action="https://formsubmit.co/oleg.mikhov@t1a.com" method="POST">
+                    <div class="cta-form-title">Book a workshop</div>
+                    <div class="cta-form-subtitle" style="color: var(--text-secondary);">We'll scope a pilot in one session.</div>
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" placeholder="Jane Smith">
+                        <input type="text" name="name" placeholder="Jane Smith" required>
                     </div>
                     <div class="form-group">
                         <label>Work email</label>
-                        <input type="email" placeholder="jane@company.com">
+                        <input type="email" name="email" placeholder="jane@company.com" required>
                     </div>
                     <div class="form-group">
                         <label>Company</label>
-                        <input type="text" placeholder="Acme Corp">
+                        <input type="text" name="company" placeholder="Acme Corp" required>
                     </div>
-                    <button class="form-submit" type="button">Book a planning session</button>
-                </div>
+                    <input type="hidden" name="_subject" value="New Genie Forge workshop request">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <button class="form-submit" type="submit">Request workshop</button>
+                    <div id="form-success" style="display:none; text-align:center; color: var(--accent-green); font-size:0.62em; padding:12px 0;">Thank you! We'll be in touch soon.</div>
+                </form>
             </div>
 
             <aside class="notes">
@@ -1537,18 +1131,30 @@
         plugins: [RevealNotes]
     });
 
-    Reveal.on('slidechanged', function () {
-        document.getElementById('navHint').classList.add('hidden');
+    document.getElementById('workshop-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = this;
+        var btn = form.querySelector('.form-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+            if (r.ok) {
+                form.reset();
+                btn.style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            } else {
+                btn.textContent = 'Error — try again';
+                btn.disabled = false;
+            }
+        }).catch(function() {
+            btn.textContent = 'Error — try again';
+            btn.disabled = false;
+        });
     });
-
-    function switchArchTab(index) {
-        document.querySelectorAll('.arch-tab').forEach(function(t, i) {
-            t.classList.toggle('active', i === index);
-        });
-        document.querySelectorAll('.arch-panel').forEach(function(p, i) {
-            p.classList.toggle('active', i === index);
-        });
-    }
 </script>
 
 </body>
