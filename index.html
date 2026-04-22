@@ -1498,23 +1498,28 @@
                     </p>
                 </div>
 
-                <div class="cta-form">
+                <form class="cta-form" id="workshop-form" action="https://formsubmit.co/oleg.mikhov@t1a.com" method="POST">
                     <div class="cta-form-title">Plan your Genie rollout</div>
                     <div class="cta-form-subtitle" style="color: var(--text-secondary);">We'll scope the right enablement model for your teams, use cases, and goals.</div>
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" placeholder="Jane Smith">
+                        <input type="text" name="name" placeholder="Jane Smith" required>
                     </div>
                     <div class="form-group">
                         <label>Work email</label>
-                        <input type="email" placeholder="jane@company.com">
+                        <input type="email" name="email" placeholder="jane@company.com" required>
                     </div>
                     <div class="form-group">
                         <label>Company</label>
-                        <input type="text" placeholder="Acme Corp">
+                        <input type="text" name="company" placeholder="Acme Corp" required>
                     </div>
-                    <button class="form-submit" type="button">Book a planning session</button>
-                </div>
+                    <input type="hidden" name="_subject" value="New Genie Forge planning session request">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <button class="form-submit" type="submit">Book a planning session</button>
+                    <div id="form-success" style="display:none; text-align:left; color: #4CAF50; font-size:0.62em; padding:12px 0;">Thank you! We'll be in touch soon.</div>
+                </form>
             </div>
 
             <aside class="notes">
@@ -1549,6 +1554,31 @@
 
     Reveal.on('slidechanged', function () {
         document.getElementById('navHint').classList.add('hidden');
+    });
+
+    document.getElementById('workshop-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = this;
+        var btn = form.querySelector('.form-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+            if (r.ok) {
+                form.reset();
+                btn.style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            } else {
+                btn.textContent = 'Error — try again';
+                btn.disabled = false;
+            }
+        }).catch(function() {
+            btn.textContent = 'Error — try again';
+            btn.disabled = false;
+        });
     });
 
     function switchArchTab(index) {
